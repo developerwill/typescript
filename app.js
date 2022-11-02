@@ -1,7 +1,5 @@
-function add(n1, n2) {
-    return n1 + n2;
+"use strict";
+function generateError(message, code) {
+    throw { message: message, errorCode: code };
 }
-var num1 = '5';
-var num2 = 2.8;
-var result = add(num1, num2);
-console.log(''.concat(result));
+generateError('An error occurred!', 500);

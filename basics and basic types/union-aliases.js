@@ -1,3 +1,4 @@
+"use strict";
 /* type combinable = number | string;
 type conversionDescriptor = 'as-number' | 'as-string';
 

@@ -1,3 +1,4 @@
+"use strict";
 /* enum Role {
     ADMIN,
     READ_ONLY,
