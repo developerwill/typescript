@@ -1,6 +1,7 @@
 class Department {
     //private id: string;
     //private name: string;
+    static fiscalYear = 2022;
     protected employees: string[];
 
     constructor(private readonly id: number, public name: string) {
@@ -104,6 +105,7 @@ accounting.printEmployeeInformation();
 const employee1 = Department.createEmployee('Wilson');
 
 console.log(employee1);
+console.log(Department.fiscalYear);
 
 // Creates a new object with the class propeties plus methods
 /* const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
