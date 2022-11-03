@@ -13,9 +13,9 @@ class Department {
         console.log(`${this.id} Department: ${this.name}`);
     }
 
-    addEmployee(empployee: string) {
+    addEmployee(employee: string) {
         //this.id = 75;
-        this.employees.push(empployee);
+        this.employees.push(employee);
     }
 
     printEmployeeInformation() {
@@ -91,7 +91,7 @@ console.log(accounting.mostRecentReport);
 //accounting.mostRecentReport = ''; // This will trigger the error because it's empty
 accounting.setMostRecentReport = 'Year End Report';
 
-accounting.addEmployee('Max');
+accounting.addEmployee('Max'); // This will trigger the error
 accounting.addEmployee('Other than Max');
 
 accounting.printReports();
