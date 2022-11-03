@@ -1,20 +1,37 @@
 class Department {
-    name: string;
+    //private id: string;
+    //private name: string;
+    private employees: string[] = [];
 
-    constructor(cName: string) {
-        this.name = cName;
+    constructor(private id: number, public name: string) {
+        //this.name = name;
     }
 
     // Method with type safety
     describe(this: Department) {
-        console.log('Department: ' + this.name);
+        console.log(`${this.id} Department: ${this.name}`);
+    }
+
+    addEmployee(empployee: string) {
+        this.employees.push(empployee);
+    }
+
+    printEmployeeInformation() {
+        console.log(this.employees.length);
+        console.log(this.employees);
     }
 }
 
-// Intanciate the classe to build an object
-const accounting = new Department('Accounting');
+// Instantiate the class to build an object
+const accounting = new Department(69, 'Accounting');
+accounting.addEmployee('Patricia');
+accounting.addEmployee('Erik');
+
+//accounting.employees[2] = 'Ana'; // This won't work because it's defined as private property
+
 accounting.describe();
+accounting.printEmployeeInformation();
 
 // Creates a new object with the class propeties plus methods
-const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
-accountingCopy.describe();
+/* const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
+accountingCopy.describe(); */
