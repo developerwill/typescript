@@ -24,15 +24,44 @@ class Department {
     }
 }
 
+class ITDepartment extends Department {
+    constructor(id: number, public admins: string[]) {
+        super(id, 'IT');
+    }
+}
+
+class AccountingDepartment extends Department {
+    constructor(id: number, public reports: string[]) {
+        super(id, 'Accounting');
+    }
+
+    addReport(text: string) {
+        this.reports.push(text);
+    }
+
+    printReports() {
+        console.log(this.reports);
+    }
+}
+
 // Instantiate the class to build an object
-const accounting = new Department(69, 'Accounting');
-accounting.addEmployee('Patricia');
-accounting.addEmployee('Erik');
+const it = new ITDepartment(69, ['Vir7uaL']);
+it.addEmployee('Patricia');
+it.addEmployee('Erik');
 
 //accounting.employees[2] = 'Ana'; // This won't work because it's defined as private property
 
-accounting.describe();
-accounting.printEmployeeInformation();
+it.describe();
+it.printEmployeeInformation();
+
+console.log(it);
+
+const accounting = new AccountingDepartment(1, []);
+
+accounting.addReport('Something went wrong...');
+accounting.addReport('All good!');
+
+accounting.printReports();
 
 // Creates a new object with the class propeties plus methods
 /* const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
