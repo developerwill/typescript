@@ -1,10 +1,11 @@
 class Department {
     //private id: string;
     //private name: string;
-    private employees: string[] = [];
+    private employees: string[];
 
-    constructor(private id: number, public name: string) {
+    constructor(private readonly id: number, public name: string) {
         //this.name = name;
+        this.employees = [];
     }
 
     // Method with type safety
@@ -13,6 +14,7 @@ class Department {
     }
 
     addEmployee(empployee: string) {
+        //this.id = 75;
         this.employees.push(empployee);
     }
 
