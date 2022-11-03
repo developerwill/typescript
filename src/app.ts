@@ -8,6 +8,10 @@ class Department {
         this.employees = [];
     }
 
+    static createEmployee(name: string) {
+        return { name: name };
+    }
+
     // Method with type safety
     describe(this: Department) {
         console.log(`${this.id} Department: ${this.name}`);
@@ -96,6 +100,10 @@ accounting.addEmployee('Other than Max');
 
 accounting.printReports();
 accounting.printEmployeeInformation();
+
+const employee1 = Department.createEmployee('Wilson');
+
+console.log(employee1);
 
 // Creates a new object with the class propeties plus methods
 /* const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
