@@ -31,8 +31,18 @@ class ITDepartment extends Department {
 }
 
 class AccountingDepartment extends Department {
+    private lastReport: string;
+
+    get mostRecentReport() {
+        if (this.lastReport) {
+            return this.lastReport;
+        }
+        throw new Error('No report found.');
+    }
+
     constructor(id: number, public reports: string[]) {
         super(id, 'Accounting');
+        this.lastReport = reports[0];
     }
 
     addEmployee(name: string) {
@@ -44,6 +54,7 @@ class AccountingDepartment extends Department {
 
     addReport(text: string) {
         this.reports.push(text);
+        this.lastReport = text;
     }
 
     printReports() {
@@ -65,8 +76,12 @@ console.log(it);
 
 const accounting = new AccountingDepartment(1, []);
 
+//console.log(accounting.mostRecentReport); // This will trigger the error because there's still no reports
+
 accounting.addReport('Something went wrong...');
 accounting.addReport('All good!');
+
+console.log(accounting.mostRecentReport);
 
 accounting.addEmployee('Max');
 accounting.addEmployee('Other than Max');
