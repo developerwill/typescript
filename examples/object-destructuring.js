@@ -4,6 +4,6 @@ const person = {
 };
 
 // Object destructuring
-const { firstName } = person;
+const { firstName: userName } = person;
 
-console.log(`${firstName}`);
+console.log(`${userName}`);
