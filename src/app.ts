@@ -40,6 +40,12 @@ class AccountingDepartment extends Department {
         throw new Error('No report found.');
     }
 
+    set setMostRecentReport(value: string) {
+        if (!value) throw new Error('Please pass in a valid value!');
+
+        this.addReport(value);
+    }
+
     constructor(id: number, public reports: string[]) {
         super(id, 'Accounting');
         this.lastReport = reports[0];
@@ -82,6 +88,8 @@ accounting.addReport('Something went wrong...');
 accounting.addReport('All good!');
 
 console.log(accounting.mostRecentReport);
+//accounting.mostRecentReport = ''; // This will trigger the error because it's empty
+accounting.setMostRecentReport = 'Year End Report';
 
 accounting.addEmployee('Max');
 accounting.addEmployee('Other than Max');
