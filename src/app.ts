@@ -39,6 +39,7 @@ class ITDepartment extends Department {
 
 class AccountingDepartment extends Department {
     private lastReport: string;
+    private static instance: AccountingDepartment;
 
     get mostRecentReport() {
         if (this.lastReport) {
@@ -53,9 +54,18 @@ class AccountingDepartment extends Department {
         this.addReport(value);
     }
 
-    constructor(id: number, public reports: string[]) {
+    private constructor(id: number, public reports: string[]) {
         super(id, 'Accounting');
         this.lastReport = reports[0];
+    }
+
+    static getInstace() {
+        if (AccountingDepartment.instance) {
+            return this.instance;
+        }
+
+        this.instance = new AccountingDepartment(30, []);
+        return this.instance;
     }
 
     describe() {
@@ -91,7 +101,7 @@ it.printEmployeeInformation();
 
 console.log(it);
 
-const accounting = new AccountingDepartment(1, []);
+const accounting = AccountingDepartment.getInstace();
 
 //console.log(accounting.mostRecentReport); // This will trigger the error because there's still no reports
 
