@@ -1,6 +1,8 @@
-interface Greetings {
+interface Named {
     readonly name: string; // It can only be set once
+}
 
+interface Greetings extends Named {
     greet(phrase: string): void;
 }
 
