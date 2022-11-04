@@ -1,4 +1,4 @@
-/* enum Role {
+enum Role {
     ADMIN,
     READ_ONLY,
     AUTHOR,
@@ -18,4 +18,3 @@ for (const hobby of person.hobbies) {
 if (person.role === Role.ADMIN) {
     console.log(`Is admin`);
 }
- */
