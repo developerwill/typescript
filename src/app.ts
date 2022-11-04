@@ -1,3 +1,13 @@
+interface AddFn {
+    (a: number, b: number): number; // Anonymous function with a return type of number
+}
+
+let add: AddFn;
+
+add = (n1: number, n2: number) => {
+    return n1 + n2;
+};
+
 interface Named {
     readonly name: string; // It can only be set once
 }
