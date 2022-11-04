@@ -1,10 +1,10 @@
-class Department {
+abstract class Department {
     //private id: string;
     //private name: string;
     static fiscalYear = 2022;
     protected employees: string[];
 
-    constructor(private readonly id: number, public name: string) {
+    constructor(protected readonly id: number, public name: string) {
         //this.name = name;
         this.employees = [];
     }
@@ -13,10 +13,8 @@ class Department {
         return { name: name };
     }
 
-    // Method with type safety
-    describe(this: Department) {
-        console.log(`${this.id} Department: ${this.name}`);
-    }
+    // This method has to be implemented on the sub-classes
+    abstract describe(this: Department): void;
 
     addEmployee(employee: string) {
         //this.id = 75;
@@ -32,6 +30,10 @@ class Department {
 class ITDepartment extends Department {
     constructor(id: number, public admins: string[]) {
         super(id, 'IT');
+    }
+
+    describe() {
+        console.log('ID Department - ID: ' + this.id);
     }
 }
 
@@ -54,6 +56,10 @@ class AccountingDepartment extends Department {
     constructor(id: number, public reports: string[]) {
         super(id, 'Accounting');
         this.lastReport = reports[0];
+    }
+
+    describe() {
+        console.log('Accounting Department - ID: ' + this.id);
     }
 
     addEmployee(name: string) {
@@ -99,8 +105,9 @@ accounting.setMostRecentReport = 'Year End Report';
 accounting.addEmployee('Max'); // This will trigger the error
 accounting.addEmployee('Other than Max');
 
-accounting.printReports();
-accounting.printEmployeeInformation();
+//accounting.printReports();
+//accounting.printEmployeeInformation();
+accounting.describe();
 
 const employee1 = Department.createEmployee('Wilson');
 
