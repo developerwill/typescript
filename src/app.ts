@@ -9,7 +9,8 @@ add = (n1: number, n2: number) => {
 };
 
 interface Named {
-    readonly name: string; // It can only be set once
+    readonly name?: string; // It can only be set once and it's optional
+    outPutName?: string;
 }
 
 interface Greetings extends Named {
@@ -17,19 +18,25 @@ interface Greetings extends Named {
 }
 
 class Person implements Greetings {
-    name: string;
+    name?: string;
     age = 30;
 
-    constructor(n: string) {
-        this.name = n;
+    constructor(n?: string) {
+        if (n) this.name = n;
     }
 
     greet(phrase: string) {
-        console.log(phrase + '' + this.name);
+        if (this.name) {
+            console.log(phrase + '' + this.name);
+        } else {
+            console.log('Hi!');
+        }
     }
 }
 
 const user1 = new Person('Wilson');
+const user2 = new Person();
 
 user1.greet(`My name is `);
-console.log(user1);
+user2.greet(`My name is `);
+//console.log(user1, user2);
