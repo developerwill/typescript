@@ -1,5 +1,5 @@
 interface Greetings {
-    name: string;
+    readonly name: string; // It can only be set once
 
     greet(phrase: string): void;
 }
